@@ -1,4 +1,4 @@
-```
+
 # **Algorithm for Information Retrieval using TF–IDF & Cosine Similarity**
 
 ### **Step 1: Load Documents**
@@ -62,9 +62,9 @@ When a query is given:
 ### **Step 10: End of Demonstration**
 
 30. Display a completion message.
-```
 
-```
+---
+
 # **Algorithm for Probabilistic Context-Free Grammar (PCFG) Parsing**
 
 ### **Step 1: Import Libraries**
@@ -118,9 +118,9 @@ When a query is given:
 ### **Step 9: End Execution**
 
 22. End the program after displaying all parse trees and probabilities.
-```
 
-```
+---
+
 # **Algorithm for Implementing WordNet in NLP**
 
 ### **Step 1: Import Libraries**
@@ -188,9 +188,9 @@ When a query is given:
 
 28. Explain that WordNet cannot identify homophones because it is spelling-based.
 29. Provide example homophone pairs manually (e.g., "to, too, two").
-```
 
-```
+---
+
 # **Algorithm for Implementing N-Gram Probabilities**
 
 ### **Step 1: Import Required Libraries**
@@ -235,4 +235,4 @@ When a query is given:
 ### **Step 6: End Program**
 
 18. Finish after displaying both bigram and trigram probability outputs.
-```
+

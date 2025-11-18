@@ -176,3 +176,45 @@ plt.imshow(word_cloud, interpolation="bilinear")
 plt.axis("off")
 plt.show()
 ```
+
+```Python
+#exp 4
+import pandas as pd
+import 6matplotlib.pyplot as plt
+from c6ollections import Counter
+
+df=pd.read_csv('/content/sentimentdataset.csv')
+df
+
+def word_frequency(column):
+  words=" ".join(column.astype(str)).split()
+  return Counter(words)
+
+def common_hashtags(column):
+  hshtags=[]
+  for text in column:
+    if isinstance(text,str):
+      hshtags.extend(text.split()) # Changed 'hashtags' to 'hshtags' and added '()'
+  return Counter(hshtags) # Changed 'hashtags' to 'hshtags'
+
+def top_users(df,n=5):
+  return(df['User'].value_counts().head(n))
+
+#Run function
+word_fre=word_frequency(df['Text'])
+calculated_common_hashtags=common_hashtags(df['Hashtags'])
+top_users=top_users(df)
+
+#print results
+print("Top 10 word frequency:\n",word_freq.most_common(10))
+print("\nTop 10 common hashtags:\n",calculated_common_hashtags.most_common(10))
+print("\nTop 5 users:\n",top_users)
+
+#plot 5 top hashtags
+plt.figure(figsize=(10,5))
+plt.bar(*zip(*calculated_common_hashtags.most_common(5)))
+plt.xlabel('Hashtags')
+plt.ylabel('Frequency')
+plt.title('Top 5 Hashtags')
+plt.show()
+```

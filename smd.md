@@ -218,3 +218,44 @@ plt.ylabel('Frequency')
 plt.title('Top 5 Hashtags')
 plt.show()
 ```
+
+```Python
+#expt 2
+import pandas as pd
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+
+df=pd.read_csv('/content/sentimentdataset.csv')
+
+df
+
+df.info()
+
+sentiment_df=df[['Text','Sentiment']]
+sentiment_df
+
+print("Sentiment Distribution")
+print(sentiment_df['Sentiment'].value_counts())
+#combine all comments into  word strings
+comment_text=sentiment_df['Text'].str.cat(sep=' ')
+#wordcloud
+word_cloud=WordCloud(
+    background_color='white',
+    stopwords=set(ENGLISH_STOP_WORDS),
+    max_words=100
+
+).generate(comment_text)
+
+
+
+#plot wordcloud
+plt.rcParams['figure.figsize']=(13,10)
+plt.imshow(word_cloud,interpolation='bilinear')
+plt.axis('off')
+plt.show()
+
+
+
+Word freq,Hshtages,Top Users
+```

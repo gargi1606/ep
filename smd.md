@@ -1,4 +1,4 @@
-```
+``` Python
 ##EXP 7
 import pandas as pd
 
@@ -64,7 +64,7 @@ from google.colab import files
 files.download("/content/lda.html")
 ```
 
-```
+``` Python
 #EXP 5
 import nltk
 import pandas as pd

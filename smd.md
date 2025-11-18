@@ -259,3 +259,70 @@ plt.show()
 
 Word freq,Hshtages,Top Users
 ```
+
+```Python
+import pandas as pd
+import networkx as nx
+import matplotlib.pyplot as plt
+
+df=pd.read_csv('/content/sentimentdataset.csv')
+
+df
+
+# Create graph using Platform → Likes
+
+G = nx.from_pandas_edgelist(df, source="Platform", target="Likes")
+
+
+# Use same layout for all graphs
+pos = nx.spring_layout(G, seed=42)
+
+
+
+# ---------------------------
+# 1. Degree Graph
+# ---------------------------
+degree = dict(nx.degree(G))
+plt.figure(figsize=(7,5))
+nx.draw(G, pos, with_labels=True,
+        node_size=[v * 80 for v in degree.values()],
+        node_color="skyblue")
+plt.title("Degree of Each Node")
+plt.show()
+
+
+# ---------------------------
+# 2. Degree Centrality Graph
+# ---------------------------
+deg_cent = nx.degree_centrality(G)
+plt.figure(figsize=(7,5))
+nx.draw(G, pos, with_labels=True,
+        node_size=[v * 1500 for v in deg_cent.values()],
+        node_color="orange")
+plt.title("Degree Centrality")
+plt.show()
+
+# ---------------------------
+# 3. Closeness Centrality Graph
+# ---------------------------
+close_cent = nx.closeness_centrality(G)
+plt.figure(figsize=(7,5))
+nx.draw(G, pos, with_labels=True,
+        node_size=[v * 2500 for v in close_cent.values()],
+        node_color="lightgreen")
+plt.title("Closeness Centrality")
+plt.show()
+
+
+
+# ---------------------------
+# 4. Betweenness Centrality Graph
+# ---------------------------
+between_cent = nx.betweenness_centrality(G)
+plt.figure(figsize=(7,5))
+nx.draw(G, pos, with_labels=True,
+        node_size=[v * 6000 for v in between_cent.values()],
+        node_color="pink")
+plt.title("Betweenness Centrality")
+plt.show()
+```

@@ -133,3 +133,46 @@ sentiment_df = df[df['Sentiment'].isin(["Positive", "Negative", "Neutral"])].cop
 #tokenziation
 sentiment_df['Tokens'] = sentiment_df["Post Content"].astype(str).apply(nltk.word_tokenize)
 ```
+
+```Python
+# ===========================
+# EXPERIMENT 3
+# INFO + WORDCLOUD
+# ===========================
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+
+
+
+# Load EXP 2 output manually (paste sentiment_df or load from CSV)
+df = pd.read_csv("/content/social_media_behavior_dataset.csv")
+
+df.info()
+
+df
+
+sentiment_df=df[['Post Content','Sentiment']]
+sentiment_df
+
+print("\nSentiment Distribution:")
+print(sentiment_df['Sentiment'].value_counts(normalize=True))
+
+# Combine all comments into one string
+comment_text = " ".join(sentiment_df["Post Content"])
+
+# --- WORDCLOUD ---
+word_cloud = WordCloud(
+    background_color="white",
+    stopwords=ENGLISH_STOP_WORDS,
+    width=900,
+    height=300
+).generate(comment_text)
+
+plt.rcParams["figure.figsize"] = (13, 10)
+plt.imshow(word_cloud, interpolation="bilinear")
+plt.axis("off")
+plt.show()
+```
